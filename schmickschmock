@@ -1,4 +1,3 @@
-//attempt 3
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +24,20 @@
     </style>
     <!-- Farcaster Open Graph Tags -->
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://degenduckynft.com/TRCKR" />
+    <meta property="fc:frame:image" content="https://imgur.com/a/mGs8jBX" />
     <meta property="fc:frame:button:1" content="View TikTok" />
-    <meta property="fc:frame:post_url" content="https://www.tiktok.com/embed/v2/7392968547082702111" />
+    <meta property="fc:frame:post_url" content="https://example.com/callback" />
 </head>
 <body>
     <div class="embed-container">
-        <iframe id="tiktokFrame" src="https://www.tiktok.com/embed/v2/7392968547082702111" frameborder="0" allowfullscreen></iframe>
+        <iframe id="tiktokFrame" src="" frameborder="0" allowfullscreen></iframe>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tiktokURL = 'https://www.tiktok.com/@schmrdty/video/7392968547082702111?_r=1&_t=8o86mb6IsCk';
-            embedTikTok(tiktokURL);
+            document.querySelector('meta[property="fc:frame:button:1"]').addEventListener('click', function() {
+                embedTikTok(tiktokURL);
+            });
         });
 
         function embedTikTok(url) {
