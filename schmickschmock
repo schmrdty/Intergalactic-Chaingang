@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"by SchmRdty.eth"</title>
+    <style>
+        .embed-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="embed-container">
+    <iframe id="tiktokFrame" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tiktokURL = 'https://www.tiktok.com/@schmrdty/video/7392968547082702111?_r=1&_t=8o86mb6IsCk';
+        embedTikTok(tiktokURL);
+    });
+
+    function embedTikTok(url) {
+        const tiktokFrame = document.getElementById('tiktokFrame');
+        tiktokFrame.src = `https://www.tiktok.com/embed/v2/${getVideoId(url)}`;
+    }
+
+    function getVideoId(url) {
+        const regex = /\/video\/(\d+)/;
+        const match = url.match(regex);
+        return match ? match[1] : '';
+    }
+</script>
+
+</body>
+</html>
