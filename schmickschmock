@@ -1,10 +1,10 @@
-//#update line 35 to your tiktok url
+//attempt 2
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"by user"</title>
+    <title>Embed TikTok URL</title>
     <style>
         .embed-container {
             position: relative;
@@ -23,30 +23,35 @@
             height: 100%;
         }
     </style>
+    <!-- Farcaster Open Graph Tags -->
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://example.com/path-to-image.png" />
+    <meta property="fc:frame:button:1" content="Play" />
+    <meta property="fc:frame:button:2" content="Pause" />
+    <meta property="fc:frame:button:3" content="Stop" />
+    <meta property="fc:frame:button:4" content="Fullscreen" />
+    <meta property="fc:frame:post_url" content="https://example.com/callback" />
 </head>
 <body>
+    <div class="embed-container">
+        <iframe id="tiktokFrame" src="https://www.tiktok.com/embed/v2/7392968547082702111" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tiktokURL = 'https://www.tiktok.com/@schmrdty/video/7392968547082702111?_r=1&_t=8o86mb6IsCk';
+            embedTikTok(tiktokURL);
+        });
 
-<div class="embed-container">
-    <iframe id="tiktokFrame" src="" frameborder="0" allowfullscreen></iframe>
-</div>
-//##+your tiktokURL ='not mine'
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tiktokURL = 'https://www.tiktok.com/@schmrdty/video/7392968547082702111?_r=1&_t=8o86mb6IsCk';
-        embedTikTok(tiktokURL);
-    });
+        function embedTikTok(url) {
+            const tiktokFrame = document.getElementById('tiktokFrame');
+            tiktokFrame.src = `https://www.tiktok.com/embed/v2/${getVideoId(url)}`;
+        }
 
-    function embedTikTok(url) {
-        const tiktokFrame = document.getElementById('tiktokFrame');
-        tiktokFrame.src = `https://www.tiktok.com/embed/v2/${getVideoId(url)}`;
-    }
-
-    function getVideoId(url) {
-        const regex = /\/video\/(\d+)/;
-        const match = url.match(regex);
-        return match ? match[1] : '';
-    }
-</script>
-
+        function getVideoId(url) {
+            const regex = /\/video\/(\d+)/;
+            const match = url.match(regex);
+            return match ? match[1] : '';
+        }
+    </script>
 </body>
 </html>
