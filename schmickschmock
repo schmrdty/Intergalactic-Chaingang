@@ -1,9 +1,10 @@
+//#update line 35 to your tiktok url
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"by SchmRdty.eth"</title>
+    <title>"by user"</title>
     <style>
         .embed-container {
             position: relative;
@@ -28,7 +29,7 @@
 <div class="embed-container">
     <iframe id="tiktokFrame" src="" frameborder="0" allowfullscreen></iframe>
 </div>
-
+//##+your tiktokURL ='not mine'
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tiktokURL = 'https://www.tiktok.com/@schmrdty/video/7392968547082702111?_r=1&_t=8o86mb6IsCk';
