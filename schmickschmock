@@ -1,4 +1,4 @@
-//attempt 2
+//attempt 3
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +25,9 @@
     </style>
     <!-- Farcaster Open Graph Tags -->
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://example.com/path-to-image.png" />
-    <meta property="fc:frame:button:1" content="Play" />
-    <meta property="fc:frame:button:2" content="Pause" />
-    <meta property="fc:frame:button:3" content="Stop" />
-    <meta property="fc:frame:button:4" content="Fullscreen" />
-    <meta property="fc:frame:post_url" content="https://example.com/callback" />
+    <meta property="fc:frame:image" content="https://degenduckynft.com/TRCKR" />
+    <meta property="fc:frame:button:1" content="View TikTok" />
+    <meta property="fc:frame:post_url" content="https://www.tiktok.com/embed/v2/7392968547082702111" />
 </head>
 <body>
     <div class="embed-container">
