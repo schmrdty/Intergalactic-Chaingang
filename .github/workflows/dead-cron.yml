@@ -1,0 +1,30 @@
+name: DEAD Daily Cron
+
+on:
+  schedule:
+    # Runs every day at 22:20 UTC
+    - cron: '20 22 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  call-dead-cron-endpoint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call DEAD /api/cron
+        run: |
+          echo "Calling DEAD cron endpoint..."
+          HTTP_STATUS=$(curl -s -o response.json -w "%{http_code}" \
+            -H "Authorization: Bearer $DEAD_CRON_SECRET" \
+            https://industry-carefully-590.app.ohara.ai/api/cron)
+
+          echo "HTTP status: $HTTP_STATUS"
+          echo "Response body:"
+          cat response.json
+
+          if [ "$HTTP_STATUS" -ge 400 ]; then
+            echo "Cron call failed"
+            exit 1
+          fi
+        env:
+          DEAD_CRON_SECRET: ${{ secrets.DEAD_CRON_SECRET }}
