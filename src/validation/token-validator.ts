@@ -87,8 +87,10 @@ export class TokenValidator {
           return await this.checkERC721Balance(address, token);
         case 'ERC1155':
           return await this.checkERC1155Balance(address, token);
-        default:
-          throw new Error(`Unsupported token type: ${token.type}`);
+        default: {
+          const tokenType = token.type || 'unknown';
+          throw new Error(`Unsupported token type: ${tokenType}`);
+        }
       }
     } catch (error) {
       console.error(`Error checking token balance for ${token.symbol}:`, error);

@@ -268,7 +268,12 @@ export class MockXMTPClient {
       // Not JSON, return generic reply
     }
 
-    return `Auto-reply: Received your message "${message.substring(0, 50)}..."`;
+    // Sanitize message for auto-reply to prevent injection
+    const sanitizedMessage = message
+      .replace(/[<>'"]/g, '') // Remove potentially dangerous characters
+      .substring(0, 50);
+    
+    return `Auto-reply: Received your message "${sanitizedMessage}..."`;
   }
 }
 
