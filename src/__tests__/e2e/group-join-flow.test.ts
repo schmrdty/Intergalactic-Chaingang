@@ -14,7 +14,7 @@ import { GroupConfig } from '../../types';
 
 describe('E2E: Group Join Flow', () => {
   let provider: ethers.JsonRpcProvider;
-  let wallet: ethers.Wallet;
+  let wallet: ethers.HDNodeWallet;
   let groupManager: GroupManager;
   let mockXMTPClient: ReturnType<typeof createMockXMTPClient>;
 

@@ -157,6 +157,11 @@ export class MockXMTPClient {
     conversation.messages.push(message);
     this.notifyListeners(conversationId, message);
 
+    // Simulate auto-reply if enabled for incoming messages
+    if (this.autoReply) {
+      this.scheduleAutoReply(conversationId, content);
+    }
+
     return message;
   }
 

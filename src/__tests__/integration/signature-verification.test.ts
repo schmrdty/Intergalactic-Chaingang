@@ -10,7 +10,7 @@ import { SignatureVerifier } from '../../validation/eip1271';
 describe('Integration: Signature Verification', () => {
   let provider: ethers.JsonRpcProvider;
   let verifier: SignatureVerifier;
-  let wallet: ethers.Wallet;
+  let wallet: ethers.HDNodeWallet;
 
   beforeAll(() => {
     // Use local test provider

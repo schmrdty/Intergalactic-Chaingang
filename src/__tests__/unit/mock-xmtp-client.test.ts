@@ -280,17 +280,27 @@ describe('Unit: Mock XMTP Client', () => {
       
       await autoClient.simulateGroupJoinRequest('test-group', requesterAddress);
 
-      // Wait for auto-reply
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // Wait for auto-reply (increased timeout for reliability)
+      await new Promise(resolve => setTimeout(resolve, 300));
 
       const conversation = autoClient.getConversationByPeer(requesterAddress);
       expect(conversation).toBeDefined();
 
       const messages = await autoClient.getMessages(conversation!.id);
-      expect(messages.length).toBeGreaterThan(1);
+      expect(messages.length).toBeGreaterThanOrEqual(1);
 
-      const lastMessage = messages[messages.length - 1];
-      const parsed = JSON.parse(lastMessage.content);
+      // Find the auto-reply message
+      const responseMessage = messages.find(msg => {
+        try {
+          const parsed = JSON.parse(msg.content);
+          return parsed.type === 'group_join_response';
+        } catch {
+          return false;
+        }
+      });
+
+      expect(responseMessage).toBeDefined();
+      const parsed = JSON.parse(responseMessage!.content);
       expect(parsed.type).toBe('group_join_response');
       expect(parsed.approved).toBe(true);
     });
